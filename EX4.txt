@@ -1,0 +1,29 @@
+Exercice 4 — Protection des pages
+1. Pourquoi appelle-t-on $_SESSION = [] avant session_destroy() ?
+
+$_SESSION = [] vide les données de session côté script PHP.
+
+session_destroy() détruit la session côté serveur, mais il est préférable de vider aussi le tableau $_SESSION pour être sûr que les données comme user_id et user_nom ne restent pas accessibles pendant l’exécution du script.
+
+2. Pourquoi utilise-t-on htmlspecialchars() sur le nom en session ?
+
+On utilise htmlspecialchars() pour éviter les attaques XSS.
+
+Exemple : si un utilisateur met comme nom :
+
+<script>alert('hack')</script>
+
+Sans htmlspecialchars(), le navigateur pourrait exécuter ce code.
+Avec htmlspecialchars(), le texte est affiché comme du texte normal, pas comme du code HTML/JavaScript.
+
+3. Que se passe-t-il si on oublie exit après header('Location:...') ?
+
+header('Location: login.php') demande au navigateur de rediriger l’utilisateur.
+
+Mais si on oublie exit, le reste du code PHP peut continuer à s’exécuter après la redirection.
+Cela peut causer des problèmes de sécurité, surtout sur une page protégée.
+
+Donc la bonne pratique est toujours :
+
+header('Location: login.php');
+exit;

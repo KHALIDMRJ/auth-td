@@ -1,0 +1,25 @@
+Exercice 3 — Connexion & Sessions
+1. Pourquoi le message d’erreur est volontairement vague ?
+
+On affiche “Email ou mot de passe incorrect” au lieu de dire exactement lequel est faux pour éviter de donner des informations à un attaquant.
+
+Si on dit “Email inexistant”, l’attaquant peut tester plusieurs emails et savoir lesquels existent dans la base.
+Donc le message vague protège contre l’énumération des utilisateurs.
+
+2. Que se passe-t-il si on supprime true dans session_regenerate_id(true) ?
+
+session_regenerate_id(true) crée un nouvel identifiant de session et supprime l’ancien.
+
+Si on enlève true, PHP crée un nouvel ID, mais l’ancien fichier de session peut rester temporairement sur le serveur.
+C’est moins sécurisé, car l’ancien identifiant pourrait encore exister pendant un moment.
+
+3. Pourquoi ne stocke-t-on pas le mot de passe en session ?
+
+Parce qu’un mot de passe est une donnée très sensible.
+
+Même si le mot de passe est correct, on ne doit jamais le garder en session. On stocke seulement des informations utiles comme :
+
+$_SESSION['user_id']
+$_SESSION['user_nom']
+
+Le mot de passe reste uniquement dans la base sous forme hachée avec password_hash().

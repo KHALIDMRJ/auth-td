@@ -316,7 +316,7 @@ This may expose protected logic or sensitive data.
 # 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/auth-td.git
+git clone https://github.com/KHALIDMRJ/auth-td.git
 ```
 
 ---

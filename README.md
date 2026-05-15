@@ -405,7 +405,7 @@ This project demonstrates professional knowledge in:
 
 <div align="center">
 
-# Khalid Morjane
+# Khalid Morjan
 
 🎓 Final-Year Student
 🤖 Artificial Intelligence & Data Science
